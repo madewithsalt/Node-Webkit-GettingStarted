@@ -135,54 +135,56 @@
                     </section>
                 </section>
                 <section>
-                    <h2>The ToDo List</h2>
-                </section>
-                <section>
-                    <h2>Adding an App Menu</h2>
-                    <p>This is an app menu that binds to the todo's create event:</p>
-                    <pre><code>
-    // link to the gui api
-    var gui = require('nw.gui');
+                    <section>
+                        <h2>The ToDo List</h2>
+                    </section>
+                    <section>
+                        <h2>Adding an App Menu</h2>
+                        <p>This is an app menu that binds to the todo's create event:</p>
+                        <pre><code>
+        // link to the gui api
+        var gui = require('nw.gui');
 
-    // create an instance of the menu
-    var menu = new gui.Menu();
+        // create an instance of the menu
+        var menu = new gui.Menu();
 
-    // add a menu item that triggers a new todo on click
-    menu.append(new gui.MenuItem({
-        label: 'New ToDo Item',
-        click: function() {
-            app.todos.create({
-                title: 'New ToDo Item',
-                order: app.todos.nextOrder(),
-                completed: false
-            });
-        }
-    }));
+        // add a menu item that triggers a new todo on click
+        menu.append(new gui.MenuItem({
+            label: 'New ToDo Item',
+            click: function() {
+                app.todos.create({
+                    title: 'New ToDo Item',
+                    order: app.todos.nextOrder(),
+                    completed: false
+                });
+            }
+        }));
 
-    // create a new menubar (required for window menus)
-    var menubar = new gui.Menu({ type: 'menubar' });
+        // create a new menubar (required for window menus)
+        var menubar = new gui.Menu({ type: 'menubar' });
 
-    // add the new menu to the menubar
-    menubar.append(new gui.MenuItem({ label: 'Submenu One', submenu: menu}));
+        // add the new menu to the menubar
+        menubar.append(new gui.MenuItem({ label: 'Submenu One', submenu: menu}));
 
-    // grab a reference to the active window
-    var win = gui.Window.get();
+        // grab a reference to the active window
+        var win = gui.Window.get();
 
-    // attach the menubar to the window. Done!
-    win.menu = menubar;
-                    </code></pre>
-                </section>
-                <section>
-                    <h2>Files Setup</h2>
-                    <pre><code>
-                        MyAwesomeApp
-                            |- app/
-                            |   |- node_modules/
-                            |   |- package.json
-                            |   |- index.html
-                            |- package.json
-                            |- node_modules/
-                    </code></pre>
+        // attach the menubar to the window. Done!
+        win.menu = menubar;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Files Setup</h2>
+                        <pre><code>
+                            MyAwesomeApp
+                                |- app/
+                                |   |- node_modules/
+                                |   |- package.json
+                                |   |- index.html
+                                |- package.json
+                                |- node_modules/
+                        </code></pre>
+                    </section>
                 </section>
                 <section>
                     <h2>Persisting Data</h2>
@@ -197,44 +199,55 @@
                     </ul>
                 </section>
                 <section>
-                    <h2>Packaging for Distribution</h2>
-                    <div class="fragment">
-                        <h3>The Hard Way:</h3>   
-                        <p>Configure and compile yourself via command line</p>
-                    </div>
-                    <br />
-                    <div class="fragment">
-                        <h3>The Easy Way:</h3>
-                        <p>Use the convenient <code>node-webkit-builder</code> package!</p>
-                        <p><small>Bonus: Use <code>grunt-node-webkit-builder</code> and configure deployments once. Woot.</small></p>
-                    </div>
-                    
+                    <section>
+                        <h2>Packaging for Distribution</h2>
+                        <div class="fragment">
+                            <h3>The Hard Way:</h3>   
+                            <p>Configure and compile yourself for each OS</p>
+                        </div>
+                        <br />
+                        <div class="fragment">
+                            <h3>The Easy Way:</h3>
+                            <p>Use the convenient <code>node-webkit-builder</code> package!</p>
+                            <p><small>Bonus: Use <code>grunt-node-webkit-builder</code> and configure deployments once. Woot.</small></p>
+                        </div>
+                        
+                    </section>
+                    <section>
+                        <h2>Grunt Node-Webkit Builder</h2>
+                        <p>
+                        <pre><code>
+          // Project configuration.
+          grunt.initConfig({
+            nodewebkit: {
+              options: {
+                  // OS's to build for
+                  platforms: ['win','osx'],
+
+                  // Where the build version of 
+                  // my node-webkit app is saved
+                  buildDir: './webkitbuilds', 
+              },
+              // Your node-webkit app
+              src: ['./app/**/*'] 
+            },
+          });
+
+          grunt.loadNpmTasks('grunt-node-webkit-builder');
+
+          // Default task.
+          grunt.registerTask('default', ['nodewebkit']);
+                          </code></pre>
+                    </section>
                 </section>
                 <section>
-                    <h2>Grunt Node-Webkit Builder</h2>
-                    <p>
-                    <pre><code>
-      // Project configuration.
-      grunt.initConfig({
-        nodewebkit: {
-          options: {
-              // OS's to build for
-              platforms: ['win','osx'],
-
-              // Where the build version of 
-              // my node-webkit app is saved
-              buildDir: './webkitbuilds', 
-          },
-          // Your node-webkit app
-          src: ['./app/**/*'] 
-        },
-      });
-
-      grunt.loadNpmTasks('grunt-node-webkit-builder');
-
-      // Default task.
-      grunt.registerTask('default', ['nodewebkit']);
-                      </code></pre>
+                    <h1>Thanks!</h1>
+                    <h3>Slides &amp; files at:</h3>
+                    <p><a href="https://github.com/tnbKristi/Node-Webkit-GettingStarted">https://github.com/tnbKristi/Node-Webkit-GettingStarted</a></p>
+                    <hr />
+                    <h5>Kristi Centinaro</h5>
+                    <p><a href="http://kristi.centinaro.net">kristi.centinaro.net</a></p>
+                    <p><a href="http://twitter.com/theresnobox">@theresnobox</a></p>
                 </section>
                 <section>
                     <h3>Other useful resources</h3>
@@ -255,13 +268,6 @@
                             </ul>
                         </li>
                     </ul>
-                </section>
-                <section>
-                    <h1>Thanks!</h1>
-                    <p>Kristi Centinaro</p>
-                    <p><a href="http://kristi.centinaro.net">kristi.centinaro.net</a></p>
-                    <p><a href="http://twitter.com/theresnobox">@theresnobox</a></p>
-
                 </section>
 			</div>
 
