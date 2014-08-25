@@ -1,0 +1,8 @@
+{
+    "name": "nodewebkit-todo",
+    "version": "0.0.1",
+    "main": "./index.html",
+    "scripts": {
+        "start": "nodewebkit"
+    }
+}
