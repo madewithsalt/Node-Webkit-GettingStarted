@@ -159,6 +159,12 @@ module.exports = function(grunt) {
 
 Run `grunt`, and your app will automagically get compiled and built into mac and windows versions!
 
+## Limitations and Drawbacks
+
+One of the biggest drawbacks that people complain about using node-webkit over native app development is the ram limitations and spin-up time. Because node-webkit uses Chromium to run the app, any quirks of Chromium will be apparent in your apps. Right now Chromium is known for being a memory hog, and can take some time to start up on less powerful machines.
+
+These aren't game-breakers for using node-webkit, as the benefits are pretty huge, but it's good to be mindful of them and try it out for yourself to determine if it's worth the compromise. 
+
 ### Other Tutorials and Resources:
 - [Creating Desktop Applications with Node-Webkit](http://strongloop.com/strongblog/creating-desktop-applications-with-node-webkit/)
 - [Getting Started with Node-Webkit](https://github.com/rogerwang/node-webkit/wiki/Getting-Started-with-node-webkit)
@@ -167,4 +173,21 @@ Run `grunt`, and your app will automagically get compiled and built into mac and
     * [About PouchDB](http://pouchdb.com/)
 - [How to Package and Distribute Your Apps](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps)
     * [Grunt Node-Webkit Builder](https://github.com/mllrsohn/grunt-node-webkit-builder)
+
+### Troubleshooting
+
+**Q**:I'm seeing an error like this when I go to package my apps:
+
+```
+Fatal error: EMFILE, <list of file names>
+```
+
+**A:** It's likely a Mac `ulimit` error (trying to run too many files). You can change your settings to allow more files to be run at once. You can see your open files limit with `ulimit -a`.
+
+Search: https://www.google.no/search?q=Fatal+error%3A+spawn+EMFILE
+
+I added the following to my `.bash_profile` to fix it:  
+`ulimit -n 5000`
+
+
 
