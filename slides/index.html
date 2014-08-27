@@ -53,8 +53,8 @@
 
 				<section>
 					<h2>What is Node-Webkit?</h2>
-					<p class="fragment">
-						In short, it's a way to create native desktop applications using web technologies (HTML, CSS, JavaScript) by leveraging the power of NodeJS and the Webkit engine.
+					<p>
+						It's a way to create native desktop applications using web technologies (HTML, CSS, JavaScript) by leveraging the power of NodeJS and the Webkit engine.
 					</p>
 				</section>
 
@@ -68,8 +68,7 @@
                         <li class="fragment">A basic understanding of NodeJS
                             <ul>
                                 <li>how require and module.exports function</li>
-                                <li>basic familiarity with core modules such as <code>path</code> or <code>fs</code> will help</li>
-                                <li>how to use and install node packages with <code>npm install</code>
+                                <li>how to use and install node packages with <code class="code">npm install</code>
                                 </li>
                             </ul>
                         </li>
@@ -77,15 +76,6 @@
                         <li class="fragment">Comfort using the command line to install packages and execute tasks</li>
 					</ul>
 				</section>
-
-                <section>
-                    <h2>Anatomy of a Node-Webkit App</h2>
-                    <div class="horiz-boxes two fragment">
-                        <div class="box">index.html</div>
-                        <div class="box">package.json</div>
-                    </div>
-                    <p class="fragment">Everything else is up to you!</p>
-                </section>
 
                 <section>
                     <h2>Developing with Node-Webkit: Binaries</h2>
@@ -98,13 +88,22 @@
                     <br />
                     <div class="fragment">
                         <h3>The Easy Way:</h3>
-                        <p>Use the convenient <code>nodewebkit</code> node package</p>
+                        <p>Use the convenient <code class="code">nodewebkit</code> node package</p>
                     </div>
                 </section>
 
                 <section>
+                    <h2>Anatomy of a Node-Webkit App</h2>
+                    <div class="horiz-boxes two fragment">
+                        <div class="box">index.html</div>
+                        <div class="box">package.json</div>
+                    </div>
+                    <p class="fragment">Everything else is up to you!</p>
+                </section>
+
+                <section>
                     <section>
-                        <h3>How about a Hello World?</h3>               
+                        <h3>The Hello World App</h3>               
                     </section>
 
                     <section>
@@ -129,6 +128,9 @@
         "main": "./index.html",
         "scripts": {
             "start": "nodewebkit"
+        },
+        "devDependencies": {
+            "nodewebkit": "^0.10.2"
         }
     }
                         </code></pre>
@@ -137,6 +139,19 @@
                 <section>
                     <section>
                         <h2>The ToDo List</h2>
+                    </section>
+                    <section>
+                        <h2>Files Setup</h2>
+                        <pre><code>
+                            MyAwesomeApp
+                                |- app/
+                                |   |- node_modules/
+                                |   |- package.json
+                                |   |- index.html
+                                |- package.json
+                                |- node_modules/
+                                |- .gitignore
+                        </code></pre>
                     </section>
                     <section>
                         <h2>Adding an App Menu</h2>
@@ -174,20 +189,22 @@
                         </code></pre>
                     </section>
                     <section>
-                        <h2>Files Setup</h2>
+                        <h2>Changing the App Window</h2>
+                        <p>You can adjust the dimensions and default display settings.</p>
                         <pre><code>
-                            MyAwesomeApp
-                                |- app/
-                                |   |- node_modules/
-                                |   |- package.json
-                                |   |- index.html
-                                |- package.json
-                                |- node_modules/
+    // package.json
+    "window": {
+      "title": "My ToDo List",
+      "toolbar": false,
+      "width": 800,
+      "height": 500
+    }
+
                         </code></pre>
                     </section>
                 </section>
                 <section>
-                    <h2>Persisting Data</h2>
+                    <h2>Persisting (Saving) App Data</h2>
                     <p>A lot of methods are supported by default</p>
                     <ul class="fragment">
                         <li>Web SQL</li>
@@ -208,8 +225,8 @@
                         <br />
                         <div class="fragment">
                             <h3>The Easy Way:</h3>
-                            <p>Use the convenient <code>node-webkit-builder</code> package!</p>
-                            <p><small>Bonus: Use <code>grunt-node-webkit-builder</code> and configure deployments once. Woot.</small></p>
+                            <p>Use the convenient <code class="code">node-webkit-builder</code> package!</p>
+                            <p><small>Bonus: Use <code class="code">grunt-node-webkit-builder</code> and configure deployments once. Woot.</small></p>
                         </div>
                         
                     </section>
@@ -243,7 +260,7 @@
                 <section>
                     <h1>Thanks!</h1>
                     <h3>Slides &amp; files at:</h3>
-                    <p><a href="https://github.com/tnbKristi/Node-Webkit-GettingStarted">https://github.com/tnbKristi/Node-Webkit-GettingStarted</a></p>
+                    <p><a href="http://bit.ly/nw-intro">bit.ly/nw-intro</a></p>
                     <hr />
                     <h5>Kristi Centinaro</h5>
                     <p><a href="http://kristi.centinaro.net">kristi.centinaro.net</a></p>

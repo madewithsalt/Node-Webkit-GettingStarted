@@ -25,4 +25,13 @@
     line-height: 200px;
     text-align: center;
     float: left;
-}`
+}
+
+.reveal .slides section .code {
+    background-color: #B8B4B4;
+    display: inline-block;
+    padding: 0 8px;
+    margin: 0 8px;
+    border-radius: 6px;
+    color: #1D1D1D;
+}
